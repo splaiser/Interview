@@ -41,9 +41,9 @@ class Stack:
                 return "Сбалансированно"
         return "Не сбалансированно"
 
+
 examp = ["(((([{}]))))", "[([])((([[[]]])))]{()}", "{{[()]}}", "}{}", "{{[(])]}}", "[[{())}]", ""]
 
 for any_examp in examp:
     test = Stack(any_examp)
     print(test.check_balance())
-
