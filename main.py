@@ -26,21 +26,22 @@ class Stack:
         return len(self.result_list)
 
     def check_balance(self):
-        if self.size() % 2:
-            return "Не сбалансированно"
-        else:
-            while self.result_list:
-                if self.peek() in self.symbols.keys():
-                    if self.symbols[self.peek()] in self.list:
-                        self.list.remove(self.symbols[self.pop()])
-                    else:
-                        return "Не сбалансированно"
-                elif self.peek() in self.symbols.values():
-                    self.list.append(self.pop())
-            return "Сбалансированно"
+        while self.is_empty():
+            if self.size() % 2:
+                return "Не сбалансированно"
+            else:
+                while self.result_list:
+                    if self.peek() in self.symbols.keys():
+                        if self.symbols[self.peek()] in self.list:
+                            self.list.remove(self.symbols[self.pop()])
+                        else:
+                            return "Не сбалансированно"
+                    elif self.peek() in self.symbols.values():
+                        self.list.append(self.pop())
+                return "Сбалансированно"
+        return "Не сбалансированно"
 
-
-examp = ["(((([{}]))))", "[([])((([[[]]])))]{()}", "{{[()]}}", "}{}", "{{[(])]}}", "[[{())}]"]
+examp = ["(((([{}]))))", "[([])((([[[]]])))]{()}", "{{[()]}}", "}{}", "{{[(])]}}", "[[{())}]", ""]
 
 for any_examp in examp:
     test = Stack(any_examp)
